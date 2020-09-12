@@ -62,8 +62,8 @@ mod html_tree;
 mod stringify;
 
 use derive_props::DerivePropsInput;
-use html_tree::{HtmlRoot, HtmlRootVNode};
-use proc_macro::TokenStream;
+pub use html_tree::{HtmlRoot, HtmlRootVNode};
+// use proc_macro::TokenStream;
 use quote::{quote, ToTokens};
 use syn::buffer::Cursor;
 use syn::parse_macro_input;
@@ -86,20 +86,20 @@ fn non_capitalized_ascii(string: &str) -> bool {
     }
 }
 
-#[proc_macro_derive(Properties, attributes(prop_or, prop_or_else, prop_or_default))]
-pub fn derive_props(input: TokenStream) -> TokenStream {
-    let input = parse_macro_input!(input as DerivePropsInput);
-    TokenStream::from(input.into_token_stream())
-}
+// #[proc_macro_derive(Properties, attributes(prop_or, prop_or_else, prop_or_default))]
+// pub fn derive_props(input: TokenStream) -> TokenStream {
+//     let input = parse_macro_input!(input as DerivePropsInput);
+//     TokenStream::from(input.into_token_stream())
+// }
 
-#[proc_macro]
-pub fn html_nested(input: TokenStream) -> TokenStream {
-    let root = parse_macro_input!(input as HtmlRoot);
-    TokenStream::from(quote! {#root})
-}
+// #[proc_macro]
+// pub fn html_nested(input: TokenStream) -> TokenStream {
+//     let root = parse_macro_input!(input as HtmlRoot);
+//     TokenStream::from(quote! {#root})
+// }
 
-#[proc_macro]
-pub fn html(input: TokenStream) -> TokenStream {
-    let root = parse_macro_input!(input as HtmlRootVNode);
-    TokenStream::from(quote! {#root})
-}
+// #[proc_macro]
+// pub fn html(input: TokenStream) -> TokenStream {
+//     let root = parse_macro_input!(input as HtmlRootVNode);
+//     TokenStream::from(quote! {#root})
+// }
